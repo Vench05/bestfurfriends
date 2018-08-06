@@ -1,3 +1,9 @@
+<?php 
+    $conn = mysqli_connect("localhost", "root", "", "dbbestfurfriends");
+
+    $result = mysqli_query($conn, "SELECT * FROM tbproduct WHERE category = 'food'")
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +15,14 @@
     <link rel="shortcut icon" href="../img/logo.png">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="header">
@@ -44,56 +58,20 @@
 
 <div class="items">
 <?php 
-    $mysqli = new mysqli("localhost", "root", "", "dbbestfurfriends");
-    if (isset($_POST['search'])) {
-        $searchq = $_POST['search'];
-
-        $sql = ("SELECT * FROM tbproduct WHERE name LIKE '%$searchq%' and category = 'food'") or die();
-        
-        $result = $mysqli->query($sql);
-
-        if ($result->num_rows > 0) {
-            while($row = mysqli_fetch_array($result)) {
+            while($product = mysqli_fetch_object($result)) {
                 ?>
             <div class="item">
-            <img src="<?php echo $row["image"] ?>">
-            <h4 class"name"> <?php echo $row["name"]; ?> </h4> <br />
-            <h4 class="price"><?php echo $row["price"]; ?> </h4>
+            <img src="<?php echo $product->image ?>">
+            <h4 class"name"> <?php echo $product->name ?> </h4> <br />
+            <h4 class="price"><?php echo $product->price ?> </h4>
             <input type="button" value="Add to Cart" class="add">
-            <input type="button" value="Details" class="add">
+            <button class="add" id="<?php echo $product->id ?>"
+            type="button" data-toggle="modal" data-target="#myModal" 
+            onclick="showDetails(this);">Details</button>
     </div>
-            <?php   
-            }
-        }
-        else {
-            
-            echo "<div class='no-result'>No Search Result </div>";
-        }
-    }
-    else {
-    $sql = "SELECT * FROM tbproduct WHERE category = 'food'";
-    $result = $mysqli->query($sql);
-        if ($result->num_rows > 0) {
-            while($row = mysqli_fetch_array($result))
-            {
-    ?>
-    <div class="item">
-            <img src="<?php echo $row["image"];?>">
-            <h4 class"name"> <?php echo $row["name"];?> </h4> <br />
-            <h4 class="price"><?php echo $row["price"];?> </h4>
-            <input type="button" value="Add to Cart" class="add">
-            <input type="button" value="Details" class="add" 
-            onclick="document.getElementById('id01').style.display='block'" 
-            class="w3-button w3-black">
-    </div>
-    <?php
-            }
-        }
-    }
-?>
+    <?php } ?>
 </div>   
 
-<footer>
     <div class="footer1">
         <div class="left-foot1">
             <i class="fas fa-phone"></i>
@@ -126,38 +104,47 @@
             </div>
         </div>
     </div>
-</footer>
 
-<div id="id01" class="w3-modal">
-    <div class="w3-modal-content w3-animate-top w3-card-4">
-      <header class="w3-container w3-teal"> 
-        <span onclick="document.getElementById('id01').style.display='none'" 
-            class="w3-button w3-display-topright">&times;
-        </span>
-
-        <?php 
-        $sql = ("SELECT * FROM tbproduct") or die();
-        
-        $result = $mysqli->query($sql);
-
-        if ($result->num_rows > 0) {
-         while($row = mysqli_fetch_array($result)) {
-    ?>
-
-    <h2><?php echo $row["name"];?></h2>
-      </header>
-      <div class="w3-container">
-      <img src="<?php echo $row["image"];?>">
-      <h4 class="price"><?php echo $row["price"];?> </h4>
-      </div>
-      <footer class="w3-container w3-teal">
-        <p>Modal Footer</p>
-      </footer>
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
         </div>
+        <div class="modal-body">
+          <p><span id="name"></span></p>
+          <p><span> asdasd</span></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
     </div>
-
-    <?php
-            }} ?>
-    <script src="./js/main.js"></script>
+  </div>
+            <!-- end modal -->
+    <script>
+        function showDetails(button) {
+        const id = button.id;
+        console.log(id);
+        
+        // ajax to call specific id
+        $.ajax({
+        url: './detail.php',
+        method: 'GET',
+        data: {"id": id},
+        success: function(response) {
+            // parsing the json string to js object
+            var product = JSON.parse(response);
+            // display in proper fields
+            $("#name").text(product.name);
+        }
+    });
+}
+    </script>
 </body>
 </html>

@@ -38,7 +38,8 @@ h4.price {
     color: #ff3D41;
 }
 
-input.add {
+input.add, 
+button.add  {
     border: 1px solid #ff8b8e;
     color: black;
     background-color: #ff8b8e;
@@ -48,6 +49,7 @@ input.add {
     font-weight: bold;
     cursor: pointer;
 }
+
 
 input.add:hover {
     background-color: #ff3D41;
