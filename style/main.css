@@ -1,0 +1,155 @@
+@import url("header.css");
+@import url("footer.css");
+@import url("product.css");
+@import url("nav.css");
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background-color:white;
+}
+
+.container {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/*SLIDESHOW*/
+.slideshow {    
+    text-align: center;
+}
+
+.slideshow .mySlides {
+    width: 100%;
+    padding: 20px 50px;
+}
+
+h1.shop {
+    color: #ff3D41;
+    text-align: center;
+    text-shadow: 1px 1px 3px black;
+    font-size: 3rem;
+}
+
+h4.qoute {
+    text-align: center;
+    text-shadow: 1px 1px 2px gray;
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+/*Sign UP*/
+.forForm {
+    margin: 20px 50px;
+    padding: 20px 50px;
+}
+form .fullForm {
+    display: grid;
+    grid-template-columns: 550px 500px;
+    margin: 20px 50px;
+    font-size: 1.2rem; 
+}
+
+span.title {
+    font-size: 1.5rem;
+}
+
+input[type="text"], input[type="password"], input[type="date"] {
+    width: 500px;
+    line-height: 30px;
+    border: none;
+    border: 1px solid gray;
+    padding: 5px 20px;
+}
+
+p.submit {
+    text-align: center;
+}
+
+p input[type="submit"] {
+    width: 400px;
+    line-height: 30px;
+    border: none;
+    background-color: #ff3D41;
+    color: white;
+    padding: 5px 20px;
+    font-size: 1.5rem;    
+}
+
+p input[type="submit"]:hover {
+    background-color: #ff8b8e;
+    color: black;
+
+}
+
+
+
+/*Log IN*/
+.loginAccount {
+    margin: 20px 50px;
+    padding: 20px 50px;
+}
+
+.log {
+    padding-left: 330px;
+}
+
+
+/*Product Header*/
+.productHeader {
+    display: grid;
+    grid-template-columns: 10% 10% 10% 10% 20% auto;
+    text-align: center;
+    border: 2px solid black;
+    padding: 5px 0;
+}
+
+/* product */
+.product {
+    display: grid;
+    grid-template-columns: 10% 40% 10% 10% 17% auto;
+    text-align: center;
+    line-height: 80px;
+}
+
+.product p {
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+}
+
+.product .table-text-align {
+    padding: 0 10px;
+    text-align: left;
+}
+
+.product p img {
+    width: 40%;
+    padding: 5px;
+}
+
+/* container */
+.product-list-container {
+    width: 80%;
+}
+
+/* add product */
+form.add-product form span, form.add-product form input{
+    display: block;
+    width: 10px;
+}
+
+/*#ffccff
+
+#ff0000
+
+#ff8b8e
+
+#ff3d41
+*/

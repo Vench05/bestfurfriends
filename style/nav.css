@@ -1,0 +1,41 @@
+/*NAVIGATION BAR*/
+.navMenu {
+    background-color: #ff8b8e;
+    color: black;
+    display: inline-block;
+    width: 100%;
+    font-size: 1.4rem;
+    font-weight: bold;
+    font-variant-caps: small-caps;
+    padding-left: 50px;
+    
+}
+
+.navMenu ul{
+    list-style-type: none;
+}
+
+.navMenu ul li {
+    float: left;
+    padding: 15px 20px;
+}
+
+.navMenu ul #active {
+    background-color: #ff3D41;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    cursor: pointer;
+}
+
+.navMenu ul li:hover  {
+    background-color: #ff3D41;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+}
+
+.navMenu ul a {
+    text-decoration: none;
+    color: black;
+}

@@ -1,0 +1,56 @@
+
+/*ITEMS*/
+.items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin: 20px 50px 20px 50px;
+    grid-gap: 10px;
+    text-align: center;
+    transition: transform .5s ease-in-out;
+}
+
+
+.items .item {
+    border: 1px solid transparent;
+    padding: 15px;
+    width: 300px;
+    margin: 0 auto;
+    transition: all .5s ease-in-out;
+}
+
+.items .item:hover {
+    border: 1px solid gray;
+    box-shadow: 0 0 5px gray;
+    text-shadow: .5px .5px .5px gray;
+    border-radius: 10px;
+}
+.items .item img {
+    width: 250px;
+    height: 250px;
+    padding: 10px;
+}
+
+h4.name:hover {
+    cursor: pointer;
+}
+
+h4.price {
+    color: #ff3D41;
+}
+
+input.add {
+    border: 1px solid #ff8b8e;
+    color: black;
+    background-color: #ff8b8e;
+    padding: 5px 10px;
+    margin-top: 5px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+input.add:hover {
+    background-color: #ff3D41;
+    color: white;
+}
+

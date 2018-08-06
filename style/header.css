@@ -1,0 +1,73 @@
+/*HEADER*/
+.header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    
+}
+
+.header img {
+    width:400px;
+    margin: 20px 50px;
+}
+
+.input {
+    margin: 10% 20px;
+    
+}
+
+.header .search-bar {
+    width: 150px;
+    line-height: 30px;
+    padding: 5px 20px;
+    color: black;
+    float: left;
+    border: none;
+    border: 1px solid #c9c9c9;
+    font-size: 1.2rem;
+    transition: width .6s ease-in-out;
+}
+
+.header .search-bar:focus {
+    width: 450px;
+    transition: width .6s ease-in-out;
+}
+
+.header button {
+    background: transparent;
+    border: none;
+    border: 1px solid grey;
+    padding: 9px;
+    width: 50px;
+    float: left;
+    background-color: #ff8b8e;
+    cursor: pointer;
+    font-size: 1.2rem;
+    
+}
+
+.header button:hover {
+    background-color: #ff3D41;
+    color: white;
+}
+
+.header .cart {
+    grid-column: 3;
+    margin: 5vh auto;
+}
+
+.header .cart i {
+    font-size: 3rem;
+    color: #ff8b8e;
+    text-shadow: 1px 1px 3px black;
+    cursor: pointer;
+}
+
+.header .cart i:hover {
+    opacity: .7;
+}
+
+.header .cart a {
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
