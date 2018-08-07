@@ -56,3 +56,6 @@ input.add:hover {
     color: white;
 }
 
+.no-result {
+    color: red;
+}

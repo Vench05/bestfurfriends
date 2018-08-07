@@ -1,0 +1,122 @@
+.w3-container {
+    display: grid;
+    grid-template-columns: 280px auto;
+    transition: all .5s ease-in-out;
+}
+
+/*Header*/
+header.w3-container{
+    display: block;
+    padding: 10px;
+    transition: all .5s ease-in-out;
+}
+
+header.w3-teal, {
+    padding: 0;
+    width: 100%;
+}
+
+/*Details*/
+.image img {
+    margin: 10px;
+    padding: 10px;
+    border: .5px solid grey;
+    border-radius: 5px;
+    width: 250px;
+}
+
+.details {
+    padding: 20px;
+    font-size: 1.2rem;
+}
+
+span#name2 {
+    font-size: 1.3rem;
+    font-weight: bolder;
+    color: #ff3d41;
+}
+
+span {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+p#description {
+    padding: 20px 0;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+p.pricing {
+    padding-top: 20px;
+    font-size: 2rem;
+    color: #ff3d41;
+}
+
+.w3-display-topright {
+    font-size: 1.7rem;
+}
+
+
+/*Plus Minus Input*/
+#field1 {
+    margin-top: 10px;
+}
+
+.field {
+    width: 50px;
+    font-size: 1rem;
+    padding: 4px;
+    text-align: center;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+button.plus, button.minus {
+    width: 20px;
+    font-weight: bold;
+    font-size: 1rem;
+    background-color: #ff8b8e;
+    border: none;
+    padding: 5px;
+}
+
+
+/*Add to Cart for Details*/
+footer.w3-container {
+    display: block;
+    padding: 0;
+}
+
+footer.w3-teal, {
+    padding: 0;
+    width: 100%;
+}
+
+footer input.add1  {
+    border: 1px solid #ff8b8e;
+    color: black;
+    background-color: #ff8b8e;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    padding: 10px;
+}
+
+footer input.add1:hover {
+    background-color: #ff3d41;
+    color: white;
+    border-radius: 0;
+}
+
+footer form {
+    text-align: center;
+    padding: 0;
+}
+
+.w3-modal {
+    transition: all .5s ease-in-out;
+}

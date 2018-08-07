@@ -1,7 +1,7 @@
 <?php 
     $conn = mysqli_connect("localhost", "root", "", "dbbestfurfriends");
 
-    $result = mysqli_query($conn, "SELECT * FROM tbproduct WHERE category = 'food'")
+    $result = mysqli_query($conn, "SELECT * FROM tbproduct WHERE category = 'food'");
 ?>
 
 <!DOCTYPE html>
@@ -11,18 +11,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BestFurFriends</title>
-    <link rel="stylesheet" href="../style/main.css">
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
     <link rel="shortcut icon" href="../img/logo.png">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="../style/main.css">
+    <link rel="stylesheet" href="../style/w3.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="header">
@@ -32,7 +30,7 @@
 
     <form action="food.php" method="POST">
         <div class="input">
-            <input class="search-bar" type="search" name="search" placeholder="Search..." value="<?php if(isset($_POST['search'])) {echo $_POST['search'];} ?>" >
+            <input class="search-bar" autocomplete="off" type="search" name="search" placeholder="Search..." value="<?php if(isset($_POST['search'])) {echo $_POST['search'];} ?>" >
             <button type="submit"><i class="fas fa-search"></i></button>
         </div>
     </form>
@@ -57,19 +55,48 @@
 </div>
 
 <div class="items">
+
 <?php 
+    if (isset($_POST['search'])) {
+        $searchInput = $_POST['search'];
+        $result = mysqli_query($conn, "SELECT * FROM tbproduct WHERE category = 'food' and name LIKE '%$searchInput%'");
+        
+        if ($result->num_rows > 0) {
             while($product = mysqli_fetch_object($result)) {
                 ?>
             <div class="item">
             <img src="<?php echo $product->image ?>">
             <h4 class"name"> <?php echo $product->name ?> </h4> <br />
-            <h4 class="price"><?php echo $product->price ?> </h4>
-            <input type="button" value="Add to Cart" class="add">
+            <h4 class="price">&#8369;<?php echo $product->price ?> </h4>
+    
             <button class="add" id="<?php echo $product->id ?>"
-            type="button" data-toggle="modal" data-target="#myModal" 
-            onclick="showDetails(this);">Details</button>
-    </div>
-    <?php } ?>
+            onclick="document.getElementById('id01').style.display='block'; showDetails(this);"
+            class="w3-button">Details</button>
+        </div>
+    <?php } ?> <?php
+        }
+        else {
+            echo "<div style='color: red; height: 380px; font-size: 1.5rem;'><br><br> <i class='em em-anguished'></i><br> <br><br> No Result Found</div>";
+        }
+    }
+
+    else {
+        while($product = mysqli_fetch_object($result)) {
+            ?>
+        <div class="item">
+            <img src="<?php echo $product->image ?>">
+            <h4 class"name"> <?php echo $product->name ?> </h4> <br />
+            <h4 class="price">&#8369;<?php echo $product->price ?> </h4>
+
+            <button class="add" id="<?php echo $product->id ?>"
+            onclick="document.getElementById('id01').style.display='block'; showDetails(this);"
+            class="w3-button">Details</button>
+        </div>
+<?php } 
+    }
+?>
+
+            
 </div>   
 
     <div class="footer1">
@@ -104,47 +131,42 @@
             </div>
         </div>
     </div>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
     
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+<!-- Modal content-->      
+    <div id="id01" class="w3-modal">
+        <div class="w3-modal-content">
+
+            <header class="w3-container w3-teal"> 
+                <span onclick="document.getElementById('id01').style.display='none'" 
+                class="w3-button w3-display-topright">&times;</span>
+                <h2><span id="name"></span></h2>
+            </header>
+
+            <div class="w3-container">
+                <div class="image">
+                    <img src="" id="image">
+                </div>
+                <div class="details">
+                    <span id="name2"></span>
+                    <p id="description"></p>
+                    <hr>
+                    <p class="pricing">&#8369;&nbsp;<span id="price"></span></p>
+                    <div id="field1">
+                        <button type="button" id="sub" class="minus">-</button>
+                        <input type="number" id="1" value="0" class="field"/>
+                        <button type="button" id="add" class="plus">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="w3-container w3-teal">
+                <form action="">
+                    <input type="button" value="Add to Cart" class="add1">
+                </form>
+            </footer>
         </div>
-        <div class="modal-body">
-          <p><span id="name"></span></p>
-          <p><span> asdasd</span></p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
     </div>
-  </div>
-            <!-- end modal -->
-    <script>
-        function showDetails(button) {
-        const id = button.id;
-        console.log(id);
-        
-        // ajax to call specific id
-        $.ajax({
-        url: './detail.php',
-        method: 'GET',
-        data: {"id": id},
-        success: function(response) {
-            // parsing the json string to js object
-            var product = JSON.parse(response);
-            // display in proper fields
-            $("#name").text(product.name);
-        }
-    });
-}
-    </script>
+<!-- end modal -->
+    <script src="../js/modal.js"></script>
 </body>
 </html>

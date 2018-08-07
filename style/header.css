@@ -1,7 +1,7 @@
 /*HEADER*/
 .header {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 40% 40% 20%;
     
 }
 
@@ -16,7 +16,7 @@
 }
 
 .header .search-bar {
-    width: 150px;
+    width: 120px;
     line-height: 30px;
     padding: 5px 20px;
     color: black;
@@ -24,12 +24,12 @@
     border: none;
     border: 1px solid #c9c9c9;
     font-size: 1.2rem;
-    transition: width .6s ease-in-out;
+    transition: width .6s ease-in;
 }
 
 .header .search-bar:focus {
-    width: 450px;
-    transition: width .6s ease-in-out;
+    width: 350px;
+    transition: width .6s ease-out;
 }
 
 .header button {
