@@ -26,3 +26,29 @@ $('#add').click(function () {
 $('#sub').click(function () {
     if ($(this).next().val() > 0) $(this).next().val(+$(this).next().val() - 1);
 });
+
+// image revciew
+(() => {
+    $('#blah').hide();
+})();a
+
+function readURL(input) {
+    $('#blah').show();
+    if (input.files) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#imgInp").change(function(){
+    readURL(this);
+});
+
+document.getElementById('reset').addEventListener('click', function () {
+    $('#blah').hide();
+});

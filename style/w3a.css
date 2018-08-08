@@ -82,6 +82,7 @@ button.plus, button.minus {
     background-color: #ff8b8e;
     border: none;
     padding: 5px;
+    cursor: pointer;
 }
 
 

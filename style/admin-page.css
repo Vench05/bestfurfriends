@@ -1,0 +1,93 @@
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.title {
+    border: 1px solid black;
+    border-right: none;
+    padding: 5px;
+    background-color: #ff8b8e;
+    text-align: center; 
+    font-weight: bolder;
+}
+
+header.product-header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid grey;
+    padding: 20px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    background-color: #ff8b8e;
+}
+
+button.add-new-product {
+    width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px #222;
+    cursor: pointer;
+    outline:none;
+    background-color: #f9f9f9;
+}
+
+button.add-new-product:hover {
+    background-color: #c9c9c9;
+}
+
+button.add-new-product:active {
+    box-shadow: 1px 1px 1px #c9c9c9;
+    transform: translateY(2px);
+    transition: all .2s ease-in;
+}
+
+.admin-search {
+    grid-column: 3;
+}
+
+.modal-add-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 20px;
+}
+
+.modal-add-container input {
+    height: auto;
+    margin-left: 100px;
+    line-height: 0;
+    padding: 5px 10px;
+}
+
+#imgInp {
+
+}
+
+#blah {
+    border: 1px solid black;
+    width: 300px;
+    height: 300px;
+}
+
+footer input {
+    width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px #222;
+    cursor: pointer;
+    outline:none;
+    background-color: #f9f9f9;
+    margin: 0 10px;
+}
+
+
+footer#admin-footer {
+    padding: 20px;
+    text-align: center;
+}
+
+.modal-add-container .add-container-right input {
+    margin-left: 20px;
+}

@@ -3,6 +3,7 @@
 @import url("product.css");
 @import url("nav.css");
 @import url("w3a.css");
+@import url("admin-page.css");
 
 
 * {
@@ -43,67 +44,3 @@ h4.qoute {
     font-size: 1.2rem;
     margin-top: 5px;
 }
-
-/*Sign UP*/
-.forForm {
-    margin: 20px 50px;
-    padding: 20px 50px;
-}
-form .fullForm {
-    display: grid;
-    grid-template-columns: 550px 500px;
-    margin: 20px 50px;
-    font-size: 1.2rem; 
-}
-
-span.title {
-    font-size: 1.5rem;
-}
-
-input[type="text"], input[type="password"], input[type="date"] {
-    width: 500px;
-    line-height: 30px;
-    border: none;
-    border: 1px solid gray;
-    padding: 5px 20px;
-}
-
-p.submit {
-    text-align: center;
-}
-
-p input[type="submit"] {
-    width: 400px;
-    line-height: 30px;
-    border: none;
-    background-color: #ff3D41;
-    color: white;
-    padding: 5px 20px;
-    font-size: 1.5rem;    
-}
-
-p input[type="submit"]:hover {
-    background-color: #ff8b8e;
-    color: black;
-
-}
-
-
-
-/*Log IN*/
-.loginAccount {
-    margin: 20px 50px;
-    padding: 20px 50px;
-}
-
-.log {
-    padding-left: 330px;
-}
-/*#ffccff
-
-#ff0000
-
-#ff8b8e
-
-#ff3d41
-*/

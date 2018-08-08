@@ -64,10 +64,13 @@
         if ($result->num_rows > 0) {
             while($product = mysqli_fetch_object($result)) {
                 ?>
-            <div class="item">
-            <img src="<?php echo $product->image ?>">
-            <h4 class"name"> <?php echo $product->name ?> </h4> <br />
-            <h4 class="price">&#8369;<?php echo $product->price ?> </h4>
+            <div class="item" id="<?php echo $product->id ?>"
+            onclick="document.getElementById('id01').style.display='block'; showDetails(this);">
+                <img src="<?php echo $product->image ?>"
+                id="<?php echo $product->id ?>"
+                onclick="document.getElementById('id01').style.display='block'; showDetails(this);">
+                <h4 class"name"> <?php echo $product->name ?> </h4> <br />
+                <h4 class="price">&#8369;<?php echo $product->price ?> </h4>
     
             <button class="add" id="<?php echo $product->id ?>"
             onclick="document.getElementById('id01').style.display='block'; showDetails(this);"
@@ -83,8 +86,10 @@
     else {
         while($product = mysqli_fetch_object($result)) {
             ?>
-        <div class="item">
-            <img src="<?php echo $product->image ?>">
+        <div class="item" id="<?php echo $product->id ?>"
+            onclick="document.getElementById('id01').style.display='block'; showDetails(this);">
+            <img src="<?php echo $product->image ?>"
+            >
             <h4 class"name"> <?php echo $product->name ?> </h4> <br />
             <h4 class="price">&#8369;<?php echo $product->price ?> </h4>
 
