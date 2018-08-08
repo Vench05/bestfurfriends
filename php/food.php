@@ -64,11 +64,8 @@
         if ($result->num_rows > 0) {
             while($product = mysqli_fetch_object($result)) {
                 ?>
-            <div class="item" id="<?php echo $product->id ?>"
-            onclick="document.getElementById('id01').style.display='block'; showDetails(this);">
-                <img src="<?php echo $product->image ?>"
-                id="<?php echo $product->id ?>"
-                onclick="document.getElementById('id01').style.display='block'; showDetails(this);">
+            <div class="item">
+                <img src="<?php echo $product->image ?>">
                 <h4 class"name"> <?php echo $product->name ?> </h4> <br />
                 <h4 class="price">&#8369;<?php echo $product->price ?> </h4>
     
@@ -79,15 +76,17 @@
     <?php } ?> <?php
         }
         else {
-            echo "<div style='color: red; height: 380px; font-size: 1.5rem;'><br><br> <i class='em em-anguished'></i><br> <br><br> No Result Found</div>";
+            echo "<div style='color: red; height: 380px; font-size: 1.5rem;'><br><br> 
+            <i class='em em-anguished'></i>
+            <br><br><br> 
+            No Result Found</div>";
         }
     }
 
     else {
         while($product = mysqli_fetch_object($result)) {
             ?>
-        <div class="item" id="<?php echo $product->id ?>"
-            onclick="document.getElementById('id01').style.display='block'; showDetails(this);">
+        <div class="item" >
             <img src="<?php echo $product->image ?>"
             >
             <h4 class"name"> <?php echo $product->name ?> </h4> <br />
@@ -173,5 +172,6 @@
     </div>
 <!-- end modal -->
     <script src="../js/modal.js"></script>
+    <script src="../js/image-preview.js"></script>
 </body>
 </html>

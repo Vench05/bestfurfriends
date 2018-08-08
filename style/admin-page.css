@@ -1,6 +1,18 @@
 .product-container {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: 8% 15% 15% 6% 6% 15% auto;
+    text-align: center;
+}
+
+.product-container img {
+    width: 100%;
+}
+
+.product-list {
+    border-bottom: 1px solid black;
+    height: 200px;
+    border-right: 1px solid black;
+    padding: 10px;
 }
 
 .title {
@@ -53,15 +65,12 @@ button.add-new-product:active {
     padding: 20px;
 }
 
-.modal-add-container input {
+.modal-add-container input, select {
     height: auto;
     margin-left: 100px;
     line-height: 0;
     padding: 5px 10px;
-}
-
-#imgInp {
-
+    margin-bottom: 10px;
 }
 
 #blah {
@@ -80,6 +89,19 @@ footer input {
     outline:none;
     background-color: #f9f9f9;
     margin: 0 10px;
+    font-size: 1.2rem;
+}
+
+footer input:hover {
+    background-color: #c9c9c9;
+    color: #ff8b8e;
+}
+
+footer input:active {
+    box-shadow: 1px 1px 1px #c9c9c9;
+    transform: translateY(2px);
+    transition: all .2s ease-in;
+    color: #ff8b8e;
 }
 
 
@@ -90,4 +112,11 @@ footer#admin-footer {
 
 .modal-add-container .add-container-right input {
     margin-left: 20px;
+    width: 100px;
+    display: block;
+}
+
+textarea.description {
+    height: 150px;
+    width: 350px;
 }
