@@ -1,7 +1,8 @@
 <?php 
-    $conn = mysqli_connect("localhost", "root", "", "dbbestfurfriends");
+    include '../config/db.php';
 
     $result = mysqli_query($conn, "SELECT * FROM tbproduct WHERE category = 'food'");
+
 ?>
 
 <!DOCTYPE html>
@@ -37,13 +38,25 @@
     
     <div class="cart">
         <i class="fas fa-shopping-cart"></i> <br /> <br />
-        <a href="">Account</a>
+        <?php 
+    if (!isset($_SESSION['username'])) {
+        echo '<a href="./login.php">login </a>';
+    } 
+    else {
+        $username = $_SESSION['username'];
+        $user = mysqli_query($conn, "SELECT * FROM tbuser WHERE username = '$username'");
+        while($product = mysqli_fetch_object($user)) { 
+            echo $product->username;
+            echo "<a href='../config/logout.php'> log-out</a>";
+        }
+    }   
+?>
     </div>
 </div>
 
 <div class="navMenu">
     <ul>
-        <a href="../index.html"><li>Home</li></a>
+        <a href="../index.php"><li>Home</li></a>
         <a href="food.php"><li id="active"> Food</li></a>
         <a href="treats.php"><li>Treats</li></a>
         <a href="health.php"><li>Health</li></a>
@@ -66,7 +79,7 @@
                 ?>
             <div class="item">
                 <img src="<?php echo $product->image ?>">
-                <h4 class"name"> <?php echo $product->name ?> </h4> <br />
+                <h4 class="name"> <?php echo $product->name ?> </h4> <br />
                 <h4 class="price">&#8369;<?php echo $product->price ?> </h4>
     
             <button class="add" id="<?php echo $product->id ?>"
@@ -89,7 +102,7 @@
         <div class="item" >
             <img src="<?php echo $product->image ?>"
             >
-            <h4 class"name"> <?php echo $product->name ?> </h4> <br />
+            <h4 class="name"> <?php echo $product->name ?> </h4> <br />
             <h4 class="price">&#8369;<?php echo $product->price ?> </h4>
 
             <button class="add" id="<?php echo $product->id ?>"
@@ -157,15 +170,25 @@
                     <p class="pricing">&#8369;&nbsp;<span id="price"></span></p>
                     <div id="field1">
                         <button type="button" id="sub" class="minus">-</button>
-                        <input type="number" id="1" value="0" class="field"/>
+                        <input type="number" id="1" min = "0" value="0" class="field"/>
                         <button type="button" id="add" class="plus">+</button>
                     </div>
                 </div>
             </div>
 
             <footer class="w3-container w3-teal">
-                <form action="">
-                    <input type="button" value="Add to Cart" class="add1">
+                <form action="../config/add-to-cart.php" method="POST">
+                    <input type="hidden" name="name" id="nameCart" value="">
+                    <input type="hidden" name="price" id="priceCart" value="">
+                    <input type="hidden" name="image" id="imgCart" value="">
+                    <input type="hidden" name="user_id" value="<?php 
+                    $username = $_SESSION['username'];
+                    $user = mysqli_query($conn, "SELECT * FROM tbuser WHERE username = '$username'");
+                    while($product = mysqli_fetch_object($user)) { 
+                        echo $product->username;
+                    }
+                    ?>">
+                    <input type="submit" value="Add to Cart" class="add1">
                 </form>
             </footer>
         </div>

@@ -1,0 +1,46 @@
+.update-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template: 1;
+    width: 50%;
+    position: absolute;
+    border: 1px solid black;
+    left: 25%;
+    top: 20%;
+    padding: 20px 20px 0 20px;
+}
+
+.update-container input, textarea {
+    padding: 5px 10px;
+}
+
+.update-container input {
+    margin-left: 20px;
+    width: 300px;
+}
+
+.update-left {
+    grid-column: 1;
+}
+
+.update-right {
+    grid-column: 2;
+    text-align: center;
+}
+
+.update-right h3, input, img {
+    margin-bottom: 10px;
+} 
+
+.update-footer {
+    grid-row: 2;
+    grid-column: 1/ span 2;
+}
+
+#imgInp {
+
+}
+
+#blah {
+    height: 600px;
+}

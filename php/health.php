@@ -1,5 +1,5 @@
 <?php 
-    $conn = mysqli_connect("localhost", "root", "", "dbbestfurfriends");
+    include '../config/db.php';
 
     $result = mysqli_query($conn, "SELECT * FROM tbproduct WHERE category = 'health'")
 ?>
@@ -36,16 +36,28 @@
     
     <div class="cart">
         <i class="fas fa-shopping-cart"></i> <br /> <br />
-        <a href="">Account</a>
+        <?php 
+    if (!isset($_SESSION['username'])) {
+        echo '<a href="./login.php">login </a>';
+    } 
+    else {
+        $username = $_SESSION['username'];
+        $user = mysqli_query($conn, "SELECT * FROM tbuser WHERE username = '$username'");
+        while($product = mysqli_fetch_object($user)) { 
+            echo $product->username;
+            echo "<a href='../config/logout.php'> log-out</a>";
+        }
+    }   
+?>
     </div>
 </div>
 
 <div class="navMenu">
     <ul>
-        <a href="../index.html"><li>Home</li></a>
+        <a href="../index.php"><li>Home</li></a>
         <a href="food.php"><li> Food</li></a>
         <a href="treats.php"><li>Treats</li></a>
-        <a href="health.php" id="active"><li>Health</li></a>
+        <a href="health.php"><li id="active">Health</li></a>
         <a href="grooming.php"><li>Grooming</li></a>
         <a href="crates.php"><li>Crates and Cages</li></a>
         <a href="toys.php"><li>Toys</li></a>
@@ -59,7 +71,7 @@
                 ?>
             <div class="item">
             <img src="<?php echo $product->image ?>">
-            <h4 class"name"> <?php echo $product->name ?> </h4> <br />
+            <h4 class="name"> <?php echo $product->name ?> </h4> <br />
             <h4 class="price"><?php echo $product->price ?> </h4>
 
             <button class="add" id="<?php echo $product->id ?>"

@@ -5,7 +5,7 @@ function showDetails(button) {
     
     // ajax to call specific id
     $.ajax({
-    url: './detail.php',
+    url: '../config/detail.php',
     method: 'GET',
     data: {"id": id},
     success: function(response) {
@@ -17,6 +17,10 @@ function showDetails(button) {
         $("#name2").text(product.name);
         $("#description").text(product.description);
         $("#price").text(product.price);
+
+        $("#nameCart").attr("value", product.name);
+        $("#priceCart").attr("value", product.price);
+        $("#imgCart").attr("value", product.image);
         }
     });
 }

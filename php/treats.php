@@ -1,5 +1,5 @@
 <?php 
-    $conn = mysqli_connect("localhost", "root", "", "dbbestfurfriends");
+    include '../config/db.php';
 
     $result = mysqli_query($conn, "SELECT * FROM tbproduct WHERE category = 'treats'")
 ?>
@@ -36,13 +36,25 @@
     
     <div class="cart">
         <i class="fas fa-shopping-cart"></i> <br /> <br />
-        <a href="">Account</a>
+        <?php 
+    if (!isset($_SESSION['username'])) {
+        echo '<a href="./login.php">login </a>';
+    } 
+    else {
+        $username = $_SESSION['username'];
+        $user = mysqli_query($conn, "SELECT * FROM tbuser WHERE username = '$username'");
+        while($product = mysqli_fetch_object($user)) { 
+            echo $product->username;
+            echo "<a href='../config/logout.php'> log-out</a>";
+        }
+    }   
+?>
     </div>
 </div>
 
 <div class="navMenu">
     <ul>
-        <a href="../index.html"><li>Home</li></a>
+        <a href="../index.php"><li>Home</li></a>
         <a href="food.php"><li> Food</li></a>
         <a href="treats.php"><li id="active">Treats</li></a>
         <a href="health.php"><li>Health</li></a>

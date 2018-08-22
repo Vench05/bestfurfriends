@@ -1,3 +1,7 @@
+<?php
+    include './config/db.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,13 +21,26 @@
         
         <div class="cart">
             <i class="fas fa-shopping-cart"></i> <br /> <br />
-            <a href="">Account</a>
+<?php 
+    if (!isset($_SESSION['username'])) {
+        echo '<a href="./php/login.php">login </a>';
+    } 
+    else {
+        $username = $_SESSION['username'];
+        $user = mysqli_query($conn, "SELECT * FROM tbuser WHERE username = '$username'");
+        while($product = mysqli_fetch_object($user)) { 
+            echo $product->username;
+            echo "<a href='./config/logout.php'> log-out</a>";
+        }
+    }   
+?>
+
         </div>
     </div>
 
     <div class="navMenu">
         <ul>
-            <a href="index.html"><li id="active">Home</li></a>
+            <a href="index.php"><li id="active">Home</li></a>
             <a href="./php/food.php"><li> Food</li></a>
             <a href="./php/treats.php"><li>Treats</li></a>
             <a href="./php/health.php"><li>Health</li></a>
@@ -59,7 +76,7 @@
         </div>
         <div class="item">
             <img src="img/Health/Allergy Immune Supplement.jpg" alt="">
-            <h4 class"name">Allergy Immune Supplement</h4> <br />
+            <h4 class="name">Allergy Immune Supplement</h4> <br />
             <h4 class="price">Php 2500</h4>
             <input type="button" value="Add to Cart" class="add">
         </div>

@@ -1,0 +1,40 @@
+input[type=date]::-webkit-inner-spin-button, 
+input[type=date]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+h1.reg {
+    width: 100%;
+    background-color: #ff8b8e;
+    padding: 5px;
+    margin-bottom: 50px;
+}
+
+form.register-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 20px;
+    width: 60%;
+    margin: 0 auto;
+}
+
+form.register-form input {
+    border: .5px solid black;
+    width: 60%;
+    padding: 10px 20px;
+}
+
+.reg-left {
+}
+
+.reg-right {
+}
+
+.reg-btn {
+    grid-column: 1 / span 2;
+}
+.reg-btn input[type="submit"] {
+    margin-top: 20px;
+    width: 20%;
+}

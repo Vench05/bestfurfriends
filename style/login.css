@@ -1,0 +1,24 @@
+body {
+    background-color: white;
+    text-align: center;
+}
+
+h1.login {
+    width: 100%;
+    background-color: #ff8b8e;
+    padding: 5px;
+    margin-bottom: 50px;
+}
+
+.login-container input[type="text"], .login-container input[type="password"] {
+    border: .5px solid black;
+    width: 20%;
+    padding: 10px 20px;
+    margin-top: 20px;
+}
+
+.login-container input[type="submit"] {
+    padding: 5px 15px;
+    width: 10%;
+    margin-top: 20px;
+}

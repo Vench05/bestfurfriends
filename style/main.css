@@ -3,7 +3,10 @@
 @import url("product.css");
 @import url("nav.css");
 @import url("w3a.css");
+@import url("update.css");
 @import url("admin-page.css");
+@import url("register.css");
+@import url("login.css");
 
 
 * {

@@ -1,5 +1,5 @@
 <?php
-    $conn = mysqli_connect("localhost", "root", "", "dbbestfurfriends");
+    include 'db.php';
     $id = $_GET['id'];
 
     $result = mysqli_query($conn ,"SELECT * FROM tbproduct WHERE id = '$id'");

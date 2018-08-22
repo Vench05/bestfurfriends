@@ -1,13 +1,7 @@
 <?php 
-    $conn = mysqli_connect("localhost", "root", "", "dbbestfurfriends");
+    include '../config/db.php';
 
     $result = mysqli_query($conn, "SELECT * FROM tbproduct");
-
-    if(isset($_POST['delete'])) {
-        $id = $_POST['id'];
-        mysqli_query($conn, "DELETE FROM `tbproduct` WHERE id = '$id'");
-        header('Location: ./admin-page.php');
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,11 +62,11 @@
                     ?>
              <div class="product-container">       
                 <div class="product-list"> 
-                    <form action="admin-page.php" method="post">
+                    <form action="../config/delete.php" method="post">
                         <input type="hidden" value="<?php echo $product->id ?>" name="id"> 
-                        <input type="button" value="Update" name="update" onclick="document.getElementById('update').style.display='block'" id="<?php echo $product->id ?>">
                         <input type="submit" value="Delete" name="delete">
-                    </form>     
+                    </form>
+                    <form action="" method="post"></form>
                 </div>
                 <h4 class="product-list"> <?php echo $product->name ?> </h4>
                 <img  class="product-list" src="<?php echo $product->image ?>">
@@ -92,12 +86,15 @@
             ?>
         <div class="product-container">
             <div class="product-list">
-                
-                <form action="admin-page.php" method="post" onsubmit="return confirm('Are you sure you want to delete this product?')">
+                <form action="update-product.php" method="post">
+                    <input type="hidden" value="<?php echo $product->id ?>" name="id"> 
+                    <input type="hidden" value="<?php echo $product->category ?>" name="category"> 
+                    <input type="submit" value="Update" name="delete">
+                </form>
+                <form action="../config/delete.php" method="post" onsubmit="return confirm('Are you sure you want to delete this product?')">
                         <input type="hidden" value="<?php echo $product->id ?>" name="id"> 
-                        <input type="button" value="Update" name="update" onclick="document.getElementById('update').style.display='block'"> 
                         <input type="submit" value="Delete" name="delete">
-                </form>    
+                </form>
             </div>
             <h4 class="product-list"> <?php echo $product->name ?> </h4>
             <img  class="product-list" src="<?php echo $product->image ?>">
@@ -119,7 +116,7 @@
                 <h1>Add New Product</h1>
             </header>
             
-            <form action="add-new-product.php" method="POST" enctype="multipart/form-data">
+            <form action="../config/add-new-product.php" method="POST" enctype="multipart/form-data">
 
             <div class="modal-add-container">
                 
@@ -127,9 +124,9 @@
                     <h3>Product Name:</h3>
                     <input type="text" name="name" id="" placeholder="Name" autocomplete="off" required>
                     <h3>Product Price:</h3>
-                    <input type="text" name="price" id="" placeholder="Price" autocomplete="off" required>
+                    <input type="number" name="price" min="0" id="" placeholder="Price" autocomplete="off" required>
                     <h3>Product Quantity:</h3>
-                    <input type="text" name="quantity" id="" placeholder="Quantity" autocomplete="off" required>
+                    <input type="number" name="quantity" min="0" id="" placeholder="Quantity" autocomplete="off" required>
                     <h3>Product Category:</h3>
                     <select name="category" >
                         <option value="food">Food</option>
@@ -160,61 +157,6 @@
         </div>
     </div>
 <!-- end modal -->
-
-
-<!-- update Modal content-->      
-<div id="update" class="w3-modal">
-    <div class="w3-modal-content">
-
-        <header class="w3-container w3-teal"> 
-            <span onclick="document.getElementById('update').style.display='none'" 
-            class="w3-button w3-display-topright">&times;</span>
-            <h1>Add New Product</h1>
-        </header>
-        
-        <form action="add-new-product.php" method="POST" enctype="multipart/form-data">
-
-        <div class="modal-add-container">
-            
-            <div class="add-container-left">
-                <h3>Product Name:</h3>
-                <input type="text" name="name" id="name" placeholder="Name" autocomplete="off" required value="">
-                <h3>Product Price:</h3>
-                <input type="text" name="price" id="price" placeholder="Price" autocomplete="off" required value="">
-                <h3>Product Quantity:</h3>
-                <input type="text" name="quantity" id="quantity" placeholder="Quantity" autocomplete="off" required value="">
-                <h3>Product Category:</h3>
-                <select name="category" id="category" default="">
-                    <option value="food">Food</option>
-                    <option value="treats">Treats</option>
-                    <option value="health">Health</option>
-                    <option value="groom">Grooming</option>
-                    <option value="crates">Crates</option>
-                    <option value="toys">Toys</option>
-                    <option value="accessories">Accessories</option>
-                </select>
-                <h3>Product Description:</h3>
-                <textarea class="description" name="description" id="description" value="" cols="60" rows="60" required></textarea>
-            </div>
-
-            <div class="add-container-right">
-                <h3>Insert Product Image: </h3>
-                <input type="file" name="product-img" id="imgInp" accept=".jpg, .jpeg, .png">
-                <img id="blah" src=""/>
-            </div>
-        </div>
-        
-
-        <footer class="w3-container w3-teal" id="admin-footer">
-            <input type="submit" value="Add Product">
-            <input type="reset" value="Reset" id="reset">
-        </footer>
-        
-        </form>
-    </div>
-</div>
-<!-- end modal -->
-    <script src="../js/modal.js"></script>
     <script src="../js/image-preview.js"></script>
 </body>
 </html>
